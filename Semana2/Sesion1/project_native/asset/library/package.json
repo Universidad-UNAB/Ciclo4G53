@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "bootswatch": "^5.2.2",
+    "grafico": "^1.0.0"
+  }
+}
