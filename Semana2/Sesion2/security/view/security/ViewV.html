@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Gestión Vistas</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/global.css'>
+    
+    <!-- Libreria web bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+    <!-- Libreria de jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Script personas -->
+    <script src="../../js/security/View.js"></script>
+</head>
+
+<body>
+    <form id="personas" name="personas">
+        <div id="divBodyPeronas" class="">
+            <div id="encabezado">
+                <label>
+                    <h1>Registro Vistas</h1>
+                </label>
+            </div>
+            <div id="data">
+                <table class="table table-secondary">                    
+                    <tr>
+                        <td>
+                            <label>Código:</label>
+                        </td>
+                        <td>
+                            <input type="hidden" name="id" id="id" value="">
+                            <input type="number" name="codigo" id="codigo" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Nombre:</label>
+                        </td>
+                        <td>
+                            <input type="text" name="nombre" id="nombre" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Ruta:</label>
+                        </td>
+                        <td>
+                            <input type="text" name="ruta" id="ruta" value="">
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <td>
+                            <label>Estado:</label>
+                        </td>
+                        <td>
+                            <select name="estado" id="estado">
+                                <option value="">--SELECCIONAR--</option>
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="botones">
+                <input type="button" class="btn btn-success" value="Agregar" onclick="Agregar();">
+                <input type="button" class="btn btn-success" value="Modificar" onclick="Modificar();">                
+            </div>
+            <br>
+            <div>
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <td>CÓDIGO</td>
+                            <td>NOMBRE</td>
+                            <td>RUTA</td>                            
+                            <td>ESTADO</td>
+                            <td colspan="2">ACCIONES</td>
+                        </tr>
+                    </thead>
+                    <tbody id="dataResult">
+                        <!-- Aquí va la consulta de la base de datos -->                  
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    loadTable();    
+</script>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Gestión Vistas Roles</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/global.css'>
+    
+    <!-- Libreria web bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+    <!-- Libreria de jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Script personas -->
+    <script src="../../js/security/ViewRole.js"></script>
+</head>
+
+<body>
+    <form id="personas" name="personas">
+        <div id="divBodyPeronas" class="">
+            <div id="encabezado">
+                <label>
+                    <h1>Registro de Vistas al Rol</h1>
+                </label>
+            </div>
+            <div id="data">
+                <table class="table table-secondary">
+                    <tr>
+                        <td>
+                            <label>Roles:</label>
+                        </td>
+                        <td>
+                            <input type="hidden" name="id" id="id" value="">
+                            <select name="rolId" id="rolId">
+                               <!-- Estos datos llegan de la base de datos -->
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Vistas:</label>
+                        </td>
+                        <td>                            
+                            <select name="vistaId" id="vistaId">
+                               <!-- Estos datos llegan de la base de datos -->
+                            </select>
+                        </td>
+                    </tr>                    
+                </table>
+            </div>
+            <div id="botones">
+                <input type="button" class="btn btn-success" value="Agregar" onclick="Agregar();">
+                <input type="button" class="btn btn-success" value="Modificar" onclick="Modificar();">                
+            </div>
+            <br>
+            <div>
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <td>ROL</td>
+                            <td>VISTA</td>                            
+                            <td colspan="2">ACCIONES</td>
+                        </tr>
+                    </thead>
+                    <tbody id="dataResult">
+                        <!-- Aquí va la consulta de la base de datos -->                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    loadTable();    
+    loadTableView();    
+    loadTableRol();    
+</script>
