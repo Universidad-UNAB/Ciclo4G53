@@ -1,0 +1,86 @@
+Crear base de datos
+use DatosBasicos
+
+Crear una colección
+db.createCollection("personas")
+
+Agregar registros
+db.personas.insert(
+    {
+        "nombre":"Jesús",
+        "apellido":"González",
+        "cargo":"formador"
+    }
+)
+
+db.personas.insert(
+    {
+        "nombre":"Adrian José Perez",
+        "cargo":"Tripulante"
+    }
+)
+
+db.personas.insert(
+    {
+        "primer_nombre":"Maria",
+        "segundo_nombre":"Angelica",
+        "rol":"Tripulante",
+        "celular":312434532
+    }
+)
+
+db.personas.insert(
+    [
+        {
+            "primer_nombre":"Sofia",
+            "segundo_nombre":"",
+            "rol":"Tripulante",
+            "celular":321423423
+        },
+        {
+            "primer_nombre":"Santiago",
+            "segundo_nombre":"",
+            "apellidos":"Suarez Florez",
+            "actividad":"Tripulante",
+            "celular":{
+                "casa":2132312321,
+                "personal":4343432423,
+                "trabajo":"321432432"
+            }
+        }
+    ]
+)
+
+
+Consutar registros sin organizar
+db.personas.find()
+
+Consutar registros organizada
+db.personas.find().pretty()
+
+===============================
+db.restos.insert(
+    [
+        {
+            Tripulante:"Jesus",
+            Sprint1:3.1,
+            Sprint2:2.4,
+            Sprint3:5.0,
+            Sprint4:3.3
+        },
+        {
+            Tripulante:"Maria Camila",
+            Sprint1:3.7,
+            Sprint2:3.4,
+            Sprint3:5.0,
+            Sprint4:4.3
+        },
+        {
+            Tripulante:"Sergio",
+            Sprint1:4.1,
+            Sprint2:2.9,
+            Sprint3:4.2,
+            Sprint4:2.8
+        }
+    ]
+)

@@ -1,0 +1,50 @@
+isbn, titulo, nEdicion,autores
+
+db.editorial.insert(
+    {
+        autores:{
+            "autor1":"Jesus",
+            "autor2":"Camila"
+        },
+        libros:{
+            "libro1":"Pruebas de software"
+        }
+    }
+)
+
+
+db.editorial.insert(
+    [
+        {
+            autores:{
+                "autor1":"Diego",
+                "autor2":"Sofia Perez"
+            },
+            libros:{
+                "libro1":"Pruebas de testing",
+                "libro2":"Testing para software",
+                "libro3":"Testing con calidad"
+            }
+        },
+        {
+            autor:"Juan Pable",
+            libros:{
+                "libro1":"Algoritmos",
+                "libro2":"Algoritmos II",
+                "libro3":"Prubeas de escritorio"
+            }
+        },
+         {
+            autores:{
+                "autor1":"Adriana Maria",
+                "autor2":"Juan Jose",
+                libros:{
+                    "libro1":"Gerencia",
+                    "libro2":"Gerencia de proyectos"
+                    
+                }
+            }
+            
+        }
+    ]
+)
