@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Tipos Inmubles</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <!-- Libreria de bootswatch -->
+    <link rel='stylesheet' type='text/css' media='screen'
+        href='../../asset/library/node_modules/bootswatch/dist/flatly/bootstrap.css'>
+
+    <!-- Estilo personalizado  -->
+    <link rel="stylesheet" href="../../asset/css/global.css">
+
+    <!-- Jquery -->
+    <script src="../../asset/library/node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- consumo de API -->
+    <script src='../../js/bienes/TiposInmuebles.js'></script>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <fieldset>
+                <legend>Registro los tipos de inmuebles</legend>
+
+                <!-- Input formulario -->
+                <div class="form-group row">
+                    <div class="col-xs-3">
+                        <label>Código</label>
+                        <input type="hidden" id="id">
+                        <input type="text" class="form-control sizeText" id="codigo" placeholder="Ingresar código">
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control sizeText" id="nombre" placeholder="Ingresar nombre">
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Descripción</label>
+                        <input type="text" class="form-control sizeText" id="descripcion" placeholder="Ingresar valor del mes">
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Estado</label>
+                        <select class="form-select sizeText" id="estado">
+                            <option>--Seleccionar--</option>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+
+                    <!-- botones de gestión para Agregar o Modificar -->
+                    <div class="col-xs-3">
+                        <br>
+                        <button type="button" class="btn btn-primary" onclick="AddData();">Agregar</button>
+                        <button type="button" class="btn btn-primary" onclick="UpdateData();">Modificar</button>
+                    </div>
+
+                    <!-- Data de salida -->
+                    <div class="col-xs-3">
+                        <br>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th>Código</th>
+                                    <td>Nombre</td>
+                                    <td>Descripción</td>
+                                    <td>Estado</td>
+                                    <td>Editar</td>
+                                    <td>Eliminar</td>
+                                </tr>
+
+                            </thead>
+                            <tbody id="dataResult">
+                                <!-- Aqui llega la data de la API -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>
+<script>
+    findAll();
+</script>
