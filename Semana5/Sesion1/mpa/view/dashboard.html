@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+    <link rel="stylesheet" href="../asset/library/node_modules/bootswatch/dist/simplex/bootstrap.css">
+    <link rel="stylesheet" href="../asset/library/node_modules/bootswatch/dist/simplex/_bootswatch.scss">
+    <script src="../js/login.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="parameter/Departamentos.html" target="marcoTrabajo">Departamentos</a>                            
+                        </li>                        
+                        <li class="nav-item">                            
+                            <a class="nav-link" href="parameter/Ciudades.html" target="marcoTrabajo">Ciudades</a>
+                        </li>                        
+                        <li class="nav-item">                            
+                            <a class="nav-link" href="bienes/CostesAministraciones.html" target="marcoTrabajo">Costes de Administración</a>
+                        </li>                
+                        <li class="nav-item">
+                            <a class="nav-link" href="bienes/TIposInmuebles.html" target="marcoTrabajo">Tipos Inmuebles</a>|                            
+                        </li>                        
+                        
+                    </ul>                   
+                </div>
+            </div>
+            <form class="d-flex">
+                <button type="button" class="btn btn-primary" onclick="CerrarSesion();">Salir</button>
+            </form>
+        </nav>
+        <div class="container" id="marcoTrabajo" name="marcoTrabajo">
+            <iframe id="marcoTrabajo" name="marcoTrabajo" width="100%" height="800px"> </iframe>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Signin Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+    <!-- ajax -->
+    <script src="asset/library/node_modules/jquery/dist/jquery.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="asset/library/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <script src="js/login.js"></script>
+    
+    <link rel="stylesheet" href="asset/css/login.css">
+</head>
+
+<body class="text-center">
+
+    <main class="form-signin">
+        <form>
+            <img class="mb-4" src="asset/library/node_modules/bootstrap-icons/icons/house-down-fill.svg" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Iniciar Sesión</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="userName" placeholder="Ingresar usuario">
+                <label for="floatingInput">Ingresar usuario</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="userPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="button" onclick="loginAccess()">Ingresar al Sistema</button>
+
+        </form>
+    </main>
+
+</body>
+
+</html>
