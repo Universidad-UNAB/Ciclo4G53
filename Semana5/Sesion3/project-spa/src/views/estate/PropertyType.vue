@@ -23,7 +23,7 @@
 
                             <label>Estado</label>
                             <select class="form-select sizeText" v-model="estado">
-                                <option disabled :selected="true" value="">-- Seleccione --</option>                                
+                                <option disabled :selected="true" value="">-- Seleccione --</option>
                                 <option value="1">Activo</option>
                                 <option value="0">Inactivo</option>
                             </select>
@@ -59,8 +59,10 @@
                                         <td>{{ item.descripcion }}</td>
                                         <td>{{ item.estado == true ? 'Activo' : 'Inactivo' }}</td>
                                         <!-- boton para obtener el id de cada registro -->
-                                        <td><img src="../../../node_modules/bootstrap-icons/icons/pencil-square.svg" @click="findByid(item.id)"></td>
-                                        <td><img src="../../../node_modules/bootstrap-icons/icons/trash2-fill.svg" @click="deleteById(item.id)"></td>
+                                        <td><img src="../../../node_modules/bootstrap-icons/icons/pencil-square.svg"
+                                                @click="findByid(item.id)"></td>
+                                        <td><img src="../../../node_modules/bootstrap-icons/icons/trash2-fill.svg"
+                                                @click="deleteById(item.id)"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -71,8 +73,11 @@
         </div>
     </div>
 </template>
+
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
+
 export default {
     name: 'PropertyTypeView',
     data() {
@@ -85,7 +90,7 @@ export default {
         }
     },
     created() {
-        this.loadData();       
+        this.loadData();
     },
     methods: {
         loadData: function () {
@@ -99,57 +104,103 @@ export default {
                 this.id = result.data.id;
                 this.codigo = result.data.codigo;
                 this.nombre = result.data.nombre;
-                this.descripcion = result.data.descripcion;               
+                this.descripcion = result.data.descripcion;
                 this.estado = (result.data.estado == true ? 1 : 0);
             })
         },
         deleteById: function (id) {
-            axios.delete('http://localhost:9000/api/estate/propertyType/' + id,).then(() => {
-                alert('El registro se eliminó de forma correcta.');
-                this.loadData();
-                this.clearList();
-            });
+            Swal.fire({
+                title: '¿Desea eliminar el registro?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminaar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Se eliminó!',
+                        'Registro eliminado.',
+                        'success'
+                    )
+                    axios.delete('http://localhost:9000/api/estate/propertyType/' + id,).then(() => {
+                        this.loadData();
+                        this.clearList();
+                    });
+                }
+            })
         },
         clearList: function () {
             this.id = 0,
                 this.codigo = '',
                 this.nombre = '',
-                this.descripcion = '',                
+                this.descripcion = '',
                 this.estado = '',
                 this.listData = []
         },
         addData: function () {
-            let data = {
-                codigo: this.codigo,
-                nombre: this.nombre,
-                descripcion: this.descripcion,                
-                estado: parseInt(this.estado)
-            };
-            axios.post('http://localhost:9000/api/estate/propertyType', data).then(result => {
-                if (result.data) {
-                    alert('El registro se guardó de forma correcta.');
-                    this.loadData();
-                    this.clearList();
+
+            Swal.fire({
+                title: '¿Desea guardar el registro?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Guardar',
+                denyButtonText: 'No guardar',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Registro almacenado con éxito!', '', 'success')
+                    let data = {
+                        codigo: this.codigo,
+                        nombre: this.nombre,
+                        descripcion: this.descripcion,
+                        estado: parseInt(this.estado)
+                    };
+                    axios.post('http://localhost:9000/api/estate/propertyType', data).then(result => {
+                        if (result.data) {
+                            this.loadData();
+                            this.clearList();
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire('Sin guardar cambios', '', 'info')
                 }
-            });
+            })
+
 
         },
         dataUpdate: function () {
-            let data = {
-                id: this.id,
-                codigo: this.codigo,
-                nombre: this.nombre,
-                descripcion: this.descripcion, 
-                estado: parseInt(this.estado)
-            };
+            Swal.fire({
+                title: '¿Desea modificar el registro?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Modificar',
+                denyButtonText: 'No modificar',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Registro se almacenado con éxito!', '', 'success')
+                    let data = {
+                        id: this.id,
+                        codigo: this.codigo,
+                        nombre: this.nombre,
+                        descripcion: this.descripcion,
+                        estado: parseInt(this.estado)
+                    };
 
-            axios.put('http://localhost:9000/api/estate/propertyType/' + this.id, data).then(result => {
-                if (result.data) {
-                    alert('El registro se modificó de forma correcta.');
-                    this.loadData();
-                    this.clearList();
+                    axios.put('http://localhost:9000/api/estate/propertyType/' + this.id, data).then(result => {
+                        if (result.data) {                            
+                            this.loadData();
+                            this.clearList();
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire('Sin guardar cambios', '', 'info')
                 }
-            });
+            })
+
+
+
 
         }
     }
